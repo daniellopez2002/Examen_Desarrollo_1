@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        isGameOver = true;
         GameOverPanel.SetActive(true);
         InGamePanel.SetActive(false);
         GameOverText.text = $"Game Over\nScore: {characterController.Score}\nTime: {Math.Round(timer)}";
