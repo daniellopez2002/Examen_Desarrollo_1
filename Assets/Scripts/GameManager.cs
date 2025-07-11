@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        GameOverPanel.SetActive(false);
+        InGamePanel.SetActive(true);
     }
 
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         GameOverPanel.SetActive(true);
         InGamePanel.SetActive(false);

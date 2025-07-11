@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     public int Score = 0;
+    public bool IsDead = false; // Flag to check if the character is dead
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IsDead) return; // Skip update if character is dead
         float movement = Input.GetAxis("Horizontal");
         anim.SetBool("IsWalking", movement != 0);
         if (movement < 0) spriteRenderer.flipX = true;
@@ -40,6 +42,7 @@ public class CharacterController : MonoBehaviour
     private void Die()
     {
         // Handle character death (e.g., play animation, disable controls)
-        Debug.Log("Character died");
+        IsDead = true;
+        GameManager.Instance.GameOver(); // Notify GameManager about game over
     }
 }
